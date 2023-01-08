@@ -21,4 +21,4 @@ jobs:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_KEY }}
-          script: sh ~/Elixir-Welcome-Bot/deploy.sh
+          script: sh ~/welcome-bot/deploy.sh
