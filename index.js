@@ -1,6 +1,7 @@
 import {Client , GatewayIntentBits , EmbedBuilder, AttachmentBuilder, time} from 'discord.js';
 import {config} from 'dotenv';
 
+// Testing Build
 config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
