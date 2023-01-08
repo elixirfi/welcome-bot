@@ -7,8 +7,7 @@ echo "Jump to app folder"
 cd /home/ubuntu/welcome-bot
 
 echo "stop index.js"
-pm2 stop index.js
-pm2 delete index.js
+pm2 kill
 
 echo "Update app from Git"
 git pull
