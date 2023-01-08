@@ -4,7 +4,7 @@ sudo npm install -g n
 sudo n stable
 
 echo "Jump to app folder"
-cd /home/ubuntu/Elixir-Welcome-Bot
+cd /home/ubuntu/welcome-bot
 
 echo "stop index.js"
 pm2 stop index.js
