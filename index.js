@@ -22,7 +22,7 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
   if(oldmember.roles.cache.size < newmember.roles.cache.size)
   {
     //Check if Holder role updates to ovols
-    const ovolsHolderRoleID = "1060559043204231188"
+    const ovolsHolderRoleID = "1043042371996229692"
     var isOvolHolderRoleAdded = (!oldmember.roles.cache.has(ovolsHolderRoleID)) && newmember.roles.cache.has(ovolsHolderRoleID)
 
     //Check Reset condition
