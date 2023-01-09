@@ -1,30 +1,47 @@
 import {Client , GatewayIntentBits , EmbedBuilder, AttachmentBuilder, time} from 'discord.js';
 import {config} from 'dotenv';
 
-// Testing Build
 config();
+
+//Create array to store last 24 hours users 
+var holdersLastDay = [];
+var time_reset = Date.now();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 
 client.on('ready', () => {
   console.log("Bot Started........")
+  const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
+  holderUpdateChannel.send("**Greetor Has been deployed**") 
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 //Role Update event
-client.on('guildMemberUpdate', async (oldmember, newmember) =>
-{
+client.on('guildMemberUpdate', (oldmember, newmember) =>
+{   
+  if(oldmember.roles.cache.size < newmember.roles.cache.size)
+  {
     //Check if Holder role updates to ovols
-    const ovolsHolderRoleID = "1043042371996229692"
-  
-    if(!oldmember.roles.cache.has(ovolsHolderRoleID) && newmember.roles.cache.has(ovolsHolderRoleID))
+    const ovolsHolderRoleID = "1060559043204231188"
+    var isOvolHolderRoleAdded = (!oldmember.roles.cache.has(ovolsHolderRoleID)) && newmember.roles.cache.has(ovolsHolderRoleID)
+
+    //Check Reset condition
+    var time_elapsed = Date.now()-time_reset
+    if(time_elapsed > 10800000 && isOvolHolderRoleAdded)
     {
-        // update cache
-         newmember = await newmember.fetch()
-      
+         console.log("Reset Last 24 hours Users");
+         const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
+         holderUpdateChannel.send("**User Reset Done for three hours**") 
+         holdersLastDay=[]
+         time_reset= Date.now()
+    }
+    
+    //Do HOLDER UPDATE
+    if( isOvolHolderRoleAdded && !holdersLastDay.includes(newmember.id))
+    {
          //Find Holder Channel to post Update
          const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
-        
+         
          //welcome image
          const file = new AttachmentBuilder('./Welcome.jpg');
 
@@ -48,7 +65,9 @@ client.on('guildMemberUpdate', async (oldmember, newmember) =>
          //Logging here about the new holder
          const timestamp = Date.now();
          console.log(`User  ${oldmember.user.username}#${oldmember.user.discriminator} became a holder at timestamp ${timestamp}`)
+         holdersLastDay.push(oldmember.user.id)
     }
+  }
 });
 
 //bot login
