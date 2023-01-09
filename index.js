@@ -16,6 +16,10 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
 {
     //Check if Holder role updates to ovols
     const ovolsHolderRoleID = "1043042371996229692"
+    
+    oldmember= await oldmember.fetch();
+    newmember= await newmember.fetch();
+  
     if(!oldmember.roles.cache.has(ovolsHolderRoleID) && newmember.roles.cache.has(ovolsHolderRoleID))
     {
          //Find Holder Channel to post Update
@@ -29,7 +33,7 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
             .setColor('#8652ff')
             .setThumbnail(oldmember.user.displayAvatarURL())
             .setTitle('Elixir City has a New Citizen  🔮')
-            .setDescription(`Welcome our new holder **${newmember.user.username}** to the City!\n\n**HOOT HOOT** 🦉\n\n`)
+            .setDescription(`Welcome our new holder **${newmember.user.username}** to the City!\n${newmember}\n\n**HOOT HOOT** 🦉\n\n`)
             .setImage('attachment://Welcome.jpg')
 
          //Send Update
