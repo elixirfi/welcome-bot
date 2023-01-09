@@ -12,7 +12,7 @@ client.on('ready', () => {
 });
 
 //Role Update event
-client.on('guildMemberUpdate', (oldmember, newmember) =>
+client.on('guildMemberUpdate', async (oldmember, newmember) =>
 {
     //Check if Holder role updates to ovols
     const ovolsHolderRoleID = "1043042371996229692"
