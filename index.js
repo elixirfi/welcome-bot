@@ -16,12 +16,12 @@ client.on('guildMemberUpdate', async (oldmember, newmember) =>
 {
     //Check if Holder role updates to ovols
     const ovolsHolderRoleID = "1043042371996229692"
-    
-    oldmember= await oldmember.fetch();
-    newmember= await newmember.fetch();
   
     if(!oldmember.roles.cache.has(ovolsHolderRoleID) && newmember.roles.cache.has(ovolsHolderRoleID))
     {
+        // update cache
+         newmember = await newmember.fetch()
+      
          //Find Holder Channel to post Update
          const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
         
