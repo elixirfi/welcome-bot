@@ -27,11 +27,11 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
 
     //Check Reset condition
     var time_elapsed = Date.now()-time_reset
-    if(time_elapsed > 10800000 && isOvolHolderRoleAdded)
+    if(time_elapsed > 86400000 && isOvolHolderRoleAdded)
     {
          console.log("Reset Last 24 hours Users");
          const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
-         holderUpdateChannel.send("**User Reset Done for three hours**") 
+         holderUpdateChannel.send("**User Reset Done for last 24 hours**") 
          holdersLastDay=[]
          time_reset= Date.now()
     }
@@ -40,7 +40,7 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
     if( isOvolHolderRoleAdded && !holdersLastDay.includes(newmember.id))
     {
          //Find Holder Channel to post Update
-         const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
+         const holderUpdateChannel = client.channels.cache.find(channel => channel.name === '💬│the-city')
          
          //welcome image
          const file = new AttachmentBuilder('./Welcome.jpg');
@@ -49,7 +49,7 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
          const embed = new EmbedBuilder()
             .setColor('#8652ff')
             .setThumbnail(oldmember.user.displayAvatarURL())
-            .setTitle('Elixir City has a New Citizen  🔮')
+            .setTitle('Elixir City has a New Citizen 🔮')
             .setDescription(`Welcome our new holder **${newmember.user.username}** to the City!\n${newmember}\n\n**HOOT HOOT** 🦉\n\n`)
             .setImage('attachment://Welcome.jpg')
 
