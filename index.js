@@ -50,7 +50,7 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
             .setColor('#8652ff')
             .setThumbnail(oldmember.user.displayAvatarURL())
             .setTitle('Elixir City has a New Citizen 🔮')
-            .setDescription(`Welcome our new holder **${newmember.user.username}** to the City!\n${newmember}\n\n**HOOT HOOT** 🦉\n\n`)
+            .setDescription(`Welcome our new holder **${newmember.user.username}** to the City! ${newmember}\n\n**HOOT HOOT** 🦉\n\n`)
             .setImage('attachment://Welcome.jpg')
 
          //Send Update
