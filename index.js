@@ -27,11 +27,11 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
 
     //Check Reset condition
     var time_elapsed = Date.now()-time_reset
-    if(time_elapsed > 86400000 && isOvolHolderRoleAdded)
+    if(time_elapsed > (86400000*7) && isOvolHolderRoleAdded)
     {
          console.log("Reset Last 24 hours Users");
          const holderUpdateChannel = client.channels.cache.find(channel => channel.name === 'welcome-holder')
-         holderUpdateChannel.send("**User Reset Done for last 24 hours**") 
+         holderUpdateChannel.send("**Weekly User Reset Done**") 
          holdersLastDay=[]
          time_reset= Date.now()
     }
