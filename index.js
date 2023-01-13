@@ -51,11 +51,11 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
             .setThumbnail(oldmember.user.displayAvatarURL())
             .setTitle('Elixir City has a New Citizen 🔮')
             .setDescription(`Welcome our new holder **${newmember.user.username}** to the City! ${newmember}\n\n**HOOT HOOT** 🦉\n\n`)
-            .setImage('attachment://Welcome.jpg')
+            //.setImage('attachment://Welcome.jpg')
 
          //Send Update
          try{
-          holderUpdateChannel.send({ embeds: [embed] , files: [file] });
+          holderUpdateChannel.send({ embeds: [embed] });
          }
          catch(e)
          {
