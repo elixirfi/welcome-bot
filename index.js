@@ -53,7 +53,7 @@ client.on('guildMemberUpdate', (oldmember, newmember) =>
             .setDescription(`Welcome our new holder **${newmember.user.username}** to the City! ${newmember}\n\n**HOOT HOOT** 🦉\n\n`)
             //.setImage('attachment://Welcome.jpg')
 
-         //Send Update
+         //Send   Update
          try{
           holderUpdateChannel.send({ embeds: [embed] });
          }
